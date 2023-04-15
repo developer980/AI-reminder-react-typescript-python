@@ -1,0 +1,9 @@
+.activities-list {
+  margin: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+}/*# sourceMappingURL=home.css.map */

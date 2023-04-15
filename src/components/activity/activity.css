@@ -1,0 +1,77 @@
+.activity {
+  width: 600px;
+  background-color: white;
+  border: 1px solid rgb(207, 207, 207);
+  display: grid;
+  grid-template-areas: "title title" "data settings" "importance manage";
+  border-radius: 10px;
+  padding: 10px;
+  grid-template-columns: 50%;
+  gap: 10px;
+}
+
+.activity-title {
+  grid-area: title;
+  color: rgb(61, 61, 61);
+  font-size: 2rem;
+  height: 3.5rem;
+  border-bottom: 1px solid rgb(151, 151, 151);
+}
+
+.activity-datails {
+  grid-area: data;
+  color: rgb(61, 61, 61);
+  font-size: 2rem;
+}
+
+.activity-settings {
+  grid-area: settings;
+  color: rgb(61, 61, 61);
+  font-size: 1.5rem;
+}
+
+.activity-settings-time {
+  font-size: 3rem;
+}
+
+.activity-importance {
+  grid-area: importance;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  background-color: rgb(25, 235, 105);
+  color: rgb(32, 128, 69);
+  font-weight: bold;
+}
+
+.activity-manage {
+  grid-area: manage;
+  color: rgb(61, 61, 61);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-settings, .activity-manage {
+  text-align: center;
+  border-left: 1px solid rgb(151, 151, 151);
+}
+
+.activity-manage-button {
+  height: 50px;
+  width: 100px;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s;
+  background-color: white;
+}
+.activity-manage-button:hover {
+  background-color: rgb(94, 94, 94);
+  color: white;
+}/*# sourceMappingURL=activity.css.map */

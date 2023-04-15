@@ -1,0 +1,87 @@
+$border-color:rgb(151, 151, 151);
+$border-color1:rgb(207, 207, 207);
+
+@mixin grid-section($area, $color, $font-size){
+    grid-area: $area,;
+    color: $color;
+    font-size: $font-size;
+}
+
+.activity{
+    width:600px;
+    background-color:white;
+    border: 1px solid $border-color1;
+    display: grid;
+    grid-template-areas: 
+        'title title'
+        'data settings'
+        'importance manage';
+
+    border-radius: 10px;
+    padding: 10px;
+    grid-template-columns: 50%;
+    // align-items: ;
+    // justify-content: space-between;
+    gap:10px;
+}
+
+.activity-title{
+    @include grid-section(title, rgb(61, 61, 61), 2rem);
+    height: 3.5rem;
+    // display: flex;
+    // align-items: center;
+    border-bottom: 1px solid $border-color;
+
+}
+
+.activity-datails{
+    @include grid-section(data, rgb(61, 61, 61), 2rem)
+}
+
+.activity-settings{
+    @include grid-section(settings, rgb(61, 61, 61), 1.5rem);
+}
+
+.activity-settings-time{
+    // @include grid-section(settings, rgb(61, 61, 61), 1.5rem);
+    font-size: 3rem;
+}
+
+.activity-importance{
+    grid-area: importance;
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+    background-color: rgb(25, 235, 105);
+    color:rgb(32, 128, 69);
+    font-weight: bold
+}
+
+.activity-manage{
+    @include grid-section(manage, rgb(61, 61, 61), 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-settings, .activity-manage{
+    // width: 100%;
+    text-align: center;
+    border-left: 1px solid $border-color;
+}
+
+.activity-manage-button{
+    height: 50px;
+    width: 100px;
+    border:none;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.25s;
+    background-color: white;
+    &:hover{
+        background-color: rgb(94, 94, 94);
+        color: white
+    }
+}
