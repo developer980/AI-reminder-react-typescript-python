@@ -1,37 +1,65 @@
 .activity {
-  width: 600px;
-  background-color: white;
-  border: 1px solid rgb(207, 207, 207);
+  width: 100%;
+  max-height: 230px;
+  box-sizing: border-box;
+  background-color: rgb(230, 230, 230);
+  border: 1px solid rgb(151, 151, 151);
   display: grid;
-  grid-template-areas: "title title" "data settings" "importance manage";
+  grid-template-areas: "title title" "date time" "importance manage";
   border-radius: 10px;
   padding: 10px;
   grid-template-columns: 50%;
   gap: 10px;
 }
+.activity input {
+  border-bottom: 1px solid rgb(95, 95, 95);
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: auto;
+  white-space: nowrap;
+}
+.activity input:focus {
+  outline-width: 0px;
+}
+.activity div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .activity-title {
   grid-area: title;
   color: rgb(61, 61, 61);
-  font-size: 2rem;
-  height: 3.5rem;
-  border-bottom: 1px solid rgb(151, 151, 151);
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+  border-bottom: 1px solid rgb(207, 207, 207);
 }
 
 .activity-datails {
-  grid-area: data;
-  color: rgb(61, 61, 61);
-  font-size: 2rem;
+  border: none;
+  background: none;
+  overflow: hidden;
 }
 
-.activity-settings {
-  grid-area: settings;
+.activity-details-date {
+  background: none;
+  border: none;
+  font-family: "Open sans";
+  font-size: 1rem;
+  grid-area: date;
   color: rgb(61, 61, 61);
-  font-size: 1.5rem;
+  font-size: none;
 }
 
-.activity-settings-time {
-  font-size: 3rem;
+.activity-details-time {
+  border: none;
+  background: none;
+  font-family: "Open sans";
+  grid-area: time;
+  color: rgb(61, 61, 61);
+  font-size: 1rem;
 }
 
 .activity-importance {
@@ -44,13 +72,16 @@
   border-radius: 4px;
   background-color: rgb(25, 235, 105);
   color: rgb(32, 128, 69);
+  grid-area: importance;
+  color: rgb(61, 61, 61);
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .activity-manage {
   grid-area: manage;
   color: rgb(61, 61, 61);
-  font-size: 2rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,12 +89,12 @@
 
 .activity-settings, .activity-manage {
   text-align: center;
-  border-left: 1px solid rgb(151, 151, 151);
+  border-left: 1px solid rgb(207, 207, 207);
 }
 
 .activity-manage-button {
   height: 50px;
-  width: 100px;
+  width: 90%;
   border: none;
   text-decoration: none;
   border-radius: 5px;

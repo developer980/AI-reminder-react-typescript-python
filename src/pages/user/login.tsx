@@ -31,8 +31,8 @@ export default function Login({}: Props) {
       <button onClick={() => {
         console.log('posting')
         axios.post("http://127.0.0.1:5000/post_user", {
-          email: 'email',
-          password:'pass'
+          email: user.email,
+          password:user.password
         }).then((data) => {
           console.log(data.data)
         })

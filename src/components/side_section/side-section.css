@@ -1,0 +1,73 @@
+.side-section {
+  width: 10%;
+  box-sizing: border-box;
+  border-right: 1px solid rgb(202, 202, 202);
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: content-box;
+  padding-top: 30px;
+}
+
+.side-section-item {
+  width: 80%;
+}
+.side-section-item div {
+  cursor: pointer;
+}
+
+.activity-type, .activity-time {
+  box-sizing: border-box;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  transition: all 0.25s linear;
+  border-radius: 5px;
+}
+
+.activity-type-work {
+  border-left: 4px solid rgb(241, 200, 65);
+}
+.activity-type-work:hover {
+  border-left: 6px solid rgb(241, 200, 65);
+}
+
+.activity-type-fun {
+  border-left: 4px solid rgb(9, 116, 204);
+}
+.activity-type-fun:hover {
+  border-left: 6px solid rgb(9, 116, 204);
+}
+
+.activity-type-travel {
+  border-left: 4px solid rgb(57, 199, 76);
+}
+.activity-type-travel:hover {
+  border-left: 6px solid rgb(57, 199, 76);
+}
+
+.activity-time-first {
+  border-left: 4px solid rgb(241, 200, 65);
+}
+.activity-time-first:hover {
+  border-left: 6px solid rgb(241, 200, 65);
+}
+
+.activity-time-mid {
+  border-left: 4px solid rgb(9, 116, 204);
+}
+.activity-time-mid:hover {
+  border-left: 6px solid rgb(9, 116, 204);
+}
+
+.activity-time-ev {
+  border-left: 4px solid rgb(57, 199, 76);
+}
+.activity-time-ev:hover {
+  border-left: 6px solid rgb(57, 199, 76);
+}
+
+.activity-time:hover, .activity-type:hover {
+  background-color: rgb(228, 228, 228);
+}/*# sourceMappingURL=side-section.css.map */

@@ -1,0 +1,87 @@
+.side-section{
+    // position: fixed;
+    width: 10%;
+    // background-color: rgb(226, 226, 226);
+    box-sizing: border-box;
+    border-right: 1px solid rgb(202, 202, 202);
+    display: flex;
+    gap:30px;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: content-box;
+    padding-top: 30px;
+}
+
+.side-section-item{
+    width: 80%;
+    // margin:auto
+
+    div{
+       cursor: pointer; 
+    }
+}
+
+.activity-type, .activity-time{
+    // background-color: aquamarine;
+    box-sizing: border-box;
+    // background-color: rgb(228, 228, 228);
+    margin: 10px;
+    margin-top: 30px;
+    padding: 10px;
+    transition: all 0.25s linear;
+    border-radius: 5px;
+}
+
+.activity-type-work{
+    border-left: 4px solid rgb(241, 200, 65);
+    &:hover{
+        border-left: 6px solid rgb(241, 200, 65);
+    }
+}
+
+
+.activity-type-fun{
+    border-left: 4px solid rgb(9, 116, 204);
+    &:hover{
+        border-left: 6px solid rgb(9, 116, 204);
+    }
+}
+
+.activity-type-travel{
+    border-left: 4px solid rgb(57, 199, 76);
+    &:hover{
+        border-left: 6px solid rgb(57, 199, 76);
+    }
+}
+
+
+.activity-time-first{
+    border-left: 4px solid rgb(241, 200, 65);
+    &:hover{
+        border-left: 6px solid rgb(241, 200, 65);
+    }
+}
+
+
+.activity-time-mid{
+    border-left: 4px solid rgb(9, 116, 204);
+    &:hover{
+        border-left: 6px solid rgb(9, 116, 204);
+    }
+}
+
+.activity-time-ev{
+    border-left: 4px solid rgb(57, 199, 76);
+    &:hover{
+        border-left: 6px solid rgb(57, 199, 76);
+    }
+}
+
+.activity-time:hover, .activity-type:hover{
+    background-color: rgb(228, 228, 228);
+    // border-left: 8px solid;
+}
+
+// .side-section-activity-types{
+    
+// }
