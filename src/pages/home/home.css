@@ -36,4 +36,23 @@
 
 .next {
   right: 0;
+}
+
+.view-suggestions {
+  position: absolute;
+  top: 130px;
+}
+
+.suggestion-menu {
+  background-color: rgb(219, 219, 219);
+  padding: 5px 0px 0px 5px;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  z-index: 1;
+  top: 170px;
+}
+
+.suggestion-item {
+  border-bottom: 1px solid;
 }/*# sourceMappingURL=home.css.map */

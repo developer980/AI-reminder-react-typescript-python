@@ -28,6 +28,23 @@ export default function Home() {
     
     const current_date = new Date(today.getTime())
 
+    // type Props = {
+    //     item: {
+    //         date: string,
+    //         day: string,
+    //         time: string,
+    //         title: string
+    //     }
+    // }
+
+    // interface suggestionsState{
+    //     list:[{
+    //         data: object,
+    //         day: string,
+    //         time: string,
+    //         title: string
+    //     }]
+    // }
     // today.setDate(today.getDate() - 7)
 
     console.log('current date: ' + today.getDate())
@@ -37,17 +54,67 @@ export default function Home() {
             day:'',
             time: "",
             title: '',
-        }
+        },
     ])
 
-    console.log(activities)
-    // const activities = 
 
-    activities.length<=1 && axios.post('http://127.0.0.1:5000/get_activities', {
+    const [suggestions, setSuggestions] = useState<any[]>([])
+    const [today_suggestions, set_today_suggestions] = useState<any[]>([])
+    const [suggestions_menu, showSuggestionsMenu] = useState<any>(0)
+
+    
+    // set_today_suggestions(prevstate => [...prevstate, {
+    //     greet:"hello there"
+    // }])
+
+    suggestions.length == 0 && axios.post('http://127.0.0.1:5000/get_suggestions', {
+        email: 'tt'
+    }).then(response => {
+        setSuggestions(response.data)
+    })
+    console.log(suggestions)
+
+    // const activities =
+
+    console.log(activities.length)
+    
+
+    activities.length == 1 && axios.post('http://127.0.0.1:5000/get_activities', {
         email:'tt'
     }).then(response => {
-        setActivities(response.data)
+        console.log('length ' + response.data.length)
+        
+        setActivities([{
+                date: "",
+                day: "",
+                time: "",
+                title: ""
+            }, ...response.data])
     })
+    console.log(activities)
+
+    const newSuggestions = suggestions.map(suggestion => {
+        const data = suggestion.data.date.filter((item: any) => item.day == days[current_day_index - 1])
+        const name = suggestion.data.name
+        return{
+            name,
+            data
+        }
+
+        // // if (suggestion.hasOwnProperty('suggestions'))
+        // console.log(data)
+
+        // return obj
+    }).filter(suggestion => suggestion.data.length > 0)
+
+    console.log(newSuggestions)
+    
+    if (!today_suggestions.length && newSuggestions.length)
+        set_today_suggestions([...newSuggestions])
+    
+    console.log(today_suggestions)
+    
+
     return (
         <Layout>
             <div className = "main-section">
@@ -57,8 +124,22 @@ export default function Home() {
                 <button className = 'switch-button next' onClick={() => {
                     setWeekIndex(week_index + 7)
                 }}>Next</button>
+                <button className="view-suggestions" onClick={() =>
+                   suggestions_menu ? showSuggestionsMenu(0) : showSuggestionsMenu(1)
+                }>suggestions</button>
                 
-                <Side_section/>
+                <div className="suggestion-menu">
+                    {
+                        suggestions_menu ?
+                        today_suggestions.map(item => {
+                        return <div className = "suggestion-item">
+                            Shouldn't you go {item.name} at {item.data[0].time}
+                        </div>
+                        }) : null
+                    }
+                </div>
+                
+                <Side_section />
                 <div className="activities-list">
                     {/* <button onClick={() => {
                         axios.post("http://127.0.0.1:5000/post", {
@@ -70,25 +151,14 @@ export default function Home() {
                     {/* <Activity title='Activity1' data = {data}/>   */}
                     {
                         days.map((day, index) => {
-                            // activities.ma
 
                             const date = new Date(today.getTime())
                             date.setDate(today.getDate() - current_date_index + week_index + index + 1)
-                            // console.log("date: " + date)
-                            // if (date == 0) {
-                            //     setMonthIndex(month_index - 1)
-                            //     console.log("true")
-                            //     date = last_month_length + date
-                            //     // setWeekIndex(24)
-                            //     // date = current_date_index + week_index - current_day_index + index + 1
-                            // }
-
-                            // console.log("date: " + date)
                             
                             const current_activities = activities.filter(activity => activity.day.includes(day))
 
                             // console.log(current_activities)
-                            return <Activity_routine activities={current_activities} day={day} date={date.getDate()} month={date.getMonth()} />
+                            return <Activity_routine activities={current_activities} day={day} date={date.getDate()} month={date.getMonth()} year= {date.getFullYear()} />
                         })
                     }
 

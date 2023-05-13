@@ -48,7 +48,7 @@ import json
 # ]
 
 def learn(elements):
-    print(json.dumps(elements, indent=3))
+    # print(json.dumps(elements, indent=3))
     checked_elements = []
 
     most_common = {

@@ -13,10 +13,11 @@ type Props = {
     }[],
     day: string,
     date: number,
-    month:number
+    month: number,
+    year:number,
 }
 
-export default function Activity_routine({ activities, day, date, month }: Props) {
+export default function Activity_routine({ activities, day, date, month, year }: Props) {
     
     const [show, showActivityModel] = useState(0) 
 
@@ -29,7 +30,7 @@ export default function Activity_routine({ activities, day, date, month }: Props
     return (
         <div className = "activity-routine">
             <div className='current-day'>
-                <b>{day}</b>, {String(date)} {months[month]}
+                <b>{day}</b>, {String(date)} {months[month]} {year}
             </div>
 
             <div className = 'routine-activities'>
@@ -37,15 +38,15 @@ export default function Activity_routine({ activities, day, date, month }: Props
 
                     const activity_date = activity.date.split("-")[2]
                     const activity_month = activity.date.split('-')[1]
-                    console.log(activity_date)
+                    console.log(activity_date + " = " + (date -1))
 
                     if(Number(activity_date) == date && Number(activity_month) == month+1)
                         return (
-                            <Activity title={activity.title} date={activity.date} time = {activity.time} currentDate = {date} />
+                            <Activity title={activity.title} date={activity.date} time={activity.time} currentDate={date}/>
                         )  
                 })}
                 
-                {show ? <Activity_model day={day} /> : null}
+                {show ? <Activity_model day={day} date={date} month={month} year={year} /> : null}
                 
                 <div className="routine-add" onClick={() => {
                     showActivityModel(1)

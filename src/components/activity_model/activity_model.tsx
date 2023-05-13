@@ -1,36 +1,57 @@
 import Axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-// import "./activity.css"
+import "./activity-model.css"
 
 type Props = {
     day: string,
-    // data: string[]
+    date: number,
+    month: number,
+    year: number,
 }
 
-const Activity_model = ({day}: Props) => {
+const Activity_model = ({ day, date, month, year }: Props) => {
 
     const [title, setTitle] = useState('')
-    const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
+    // const [date, setDate] = useState('')
+    const [time, setTime] = useState<any>({
+        hours: '',
+        minutes:''
+    })
     console.log(date)
+
+    const fullDate = `${year}-${month < 10 ? "0" + (month + 1) : month}-${date < 10 ? "0" + date : date}`
 
     return <div className='activity'>
             <input className="activity-title" placeholder='Activity name' onChange={(e) => {  
             setTitle(e.target.value)
             }}/>
                 
-            <div className="activity-details">
-                <input className="activity-details-date" type="date" placeholder='Date' onChange={(e) => {
-                    setDate(e.target.value)
-                }} />
+            <div className="activity-details-date">
+                {fullDate}
             </div>
         
-            <div className="activity-settings">
+            <div>
                     {/* <input className="activity-settings-date"></input> */}
-                <input className="activity-settings-time" onChange={(e) => {
-                    setTime(e.target.value)
-                }} placeholder='H:MIN'/>
+                <input className="activity-details-time activity-details-time-input" maxLength={2} onChange={(e) => {
+                    if(e.target.value.length == 2)
+                        document.getElementById("minutes")?.focus()
+                
+                    setTime((prevState:any) => {
+                        return {
+                            hours: e.target.value,
+                            minutes: prevState.minutes,
+                        }
+                    })
+                }} /> :
+                <input id="minutes" className="activity-details-time activity-details-time-input" maxLength={2} onChange={(e) => {
+                setTime((prevState:any) => {
+                    return {
+                        hours: prevState.hours,
+                        minutes: e.target.value,
+                    }
+                })
+                }} />
             </div>  
 
                 <div className="activity-importance">
@@ -42,8 +63,8 @@ const Activity_model = ({day}: Props) => {
                 console.log('sending')
                 Axios.post('http://127.0.0.1:5000/add_activity', {
                     title:title,
-                    date:date,
-                    time: time,
+                    date:fullDate,
+                    time: time.hours + ":" + time.minutes,
                     day:day
                 })
                     }}>Add</button>
